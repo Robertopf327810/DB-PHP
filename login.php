@@ -49,4 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <input type="password" name="password" required>
     <button type="submit">Entrar</button>
 </form>
-<p>
+<p><?php echo htmlspecialchars($mensaje); ?></p>
+<a href="registro.php">Crear cuenta</a>
+<!-- include_once "footer.php" -->
