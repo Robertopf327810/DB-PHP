@@ -21,18 +21,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (!$usuario["email_verificado"]) {
             $mensaje = "Primero confirma tu email.";
         }
-    elseif (
-        password_verify(
-            $password,
-            $usuario["password"]
-        )
-    ) {
-        session_regenerate_id(true);
-        $_SESSION["usuario_id"] = $usuario["id"];
-        $_SESSION["nombre"] = $usuario["nombre"];
-        header("Location: dashboard.php");
-        exit;
-    } else {
+        elseif (
+            password_verify(
+                $password,
+                $usuario["password"]
+            )
+        ) {
+            session_regenerate_id(true);
+            $_SESSION["usuario_id"] = $usuario["id"];
+            $_SESSION["nombre"] = $usuario["nombre"];
+            header("Location: dashboard.php");
+            exit;
+        } else {
             $mensaje = "Contraseña incorrecta.";
         }
     } else {
@@ -40,7 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
-<!-- include_once "header.php"; -->
+<?php include_once "header.php"; ?>
+
 <h1>Iniciar sesión</h1>
 <form method="POST">
     <label>Email</label>
@@ -51,4 +52,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </form>
 <p><?php echo htmlspecialchars($mensaje); ?></p>
 <a href="registro.php">Crear cuenta</a>
-<!-- include_once "footer.php" -->
+
+<?php include_once "footer.php"; ?>

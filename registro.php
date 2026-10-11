@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST["email"]);
     $password = trim($_POST["password"]);
 
-    //CONVERTIR EL PASSWORD A HASH
+    // CONVERTIR EL PASSWORD A HASH
     $passwordHash = password_hash(
         $password,
         PASSWORD_DEFAULT
@@ -44,23 +44,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </p>";
     
     } else {
-        $mensaje = "ENo se pudo registrar el usuario.";
+        $mensaje = "No se pudo registrar el usuario.";
     }
 }
 ?>
-<!-- include_once "header.php"; -->
+<?php include_once "header.php"; ?>
+
 <h1>Registro de alumno</h1>
 <form method="POST">
     <label>Numero de control:</label>
     <input type="number" name="id" min="1" required>
+    
     <label>Nombre:</label>
     <input type="text" name="nombre" required>
+    
     <label>Email:</label>
     <input type="email" name="email" required>
+    
     <label>Password:</label>
     <input type="password" name="password" required>
+    
     <input type="submit" value="Registrar">
 </form>
+
 <p><?php echo $mensaje; ?></p>
 <a href="login.php">Iniciar sesión</a>
-<!-- include_once "footer.php"; -->
+
+<?php include_once "footer.php"; ?>
